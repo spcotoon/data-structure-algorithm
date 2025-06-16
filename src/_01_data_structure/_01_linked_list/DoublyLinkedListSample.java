@@ -1,34 +1,21 @@
-package _01_linked_list;
+package _01_data_structure._01_linked_list;
 
-class Node {
-
-    private int data;
-    private Node next;
-
-    public Node(int data) {
-        this.data = data;
-        this.next = null;
-    }
-
-    public void setNext(Node next) {
-        this.next = next;
-    }
-
-    public Node getNext() {
-        return next;
-    }
-
-    public int getData() {
-        return data;
-    }
-}
-
-class LinkedListSample {
+public class DoublyLinkedListSample {
     private Node head;
+    private Node tail;
     private int count;
 
-    public LinkedListSample() {
+    public int getCount() {
+        return count;
+    }
+
+    public Node getTail() {
+        return this.tail;
+    }
+
+    public DoublyLinkedListSample() {
         this.head = null;
+        this.tail = null;
         this.count = 0;
     }
 
@@ -41,15 +28,29 @@ class LinkedListSample {
 
         if (index == 0) {
             newNode.setNext(head);
+            if (this.head != null) {
+                this.head.setPrev(newNode);
+            }
             this.head = newNode;
+        } else if (index == this.count) {
+            newNode.setNext(null);
+            newNode.setPrev(this.tail);
+            this.tail.setNext(newNode);
         } else {
             Node currentNode = this.head;
 
-            for (int i = 0; i < index -1; i++) {
+            for (int i = 0; i < index - 1; i++) {
                 currentNode = currentNode.getNext();
             }
+
             newNode.setNext(currentNode.getNext());
+            newNode.setPrev(currentNode);
             currentNode.setNext(newNode);
+            newNode.getNext().setPrev(newNode);
+        }
+
+        if (newNode.getNext() == null) {
+            this.tail = newNode;
         }
         this.count++;
     }
@@ -89,7 +90,20 @@ class LinkedListSample {
 
         if (index == 0) {
             Node deletedNode = this.head;
-            this.head = this.head.getNext();
+
+            if (this.head.getNext() == null) {
+                this.head = null;
+                this.tail = null;
+            } else {
+                this.head = this.head.getNext();
+                this.head.setPrev(null);
+            }
+            this.count--;
+            return deletedNode;
+        } else if (index == this.count - 1) {
+            Node deletedNode = this.tail;
+            this.tail.getPrev().setNext(null);
+            this.tail = this.tail.getPrev();
             this.count--;
             return deletedNode;
         } else {
@@ -99,9 +113,11 @@ class LinkedListSample {
 
             Node deletedNode = currentNode.getNext();
             currentNode.setNext(currentNode.getNext().getNext());
+            currentNode.getNext().setPrev(currentNode);
             this.count--;
             return deletedNode;
         }
+
     }
 
     public Node deleteLast() {
@@ -120,52 +136,4 @@ class LinkedListSample {
 
         return currentNode;
     }
-}
-
-public class LinkedListPractice {
-    public static void main(String[] args) {
-        // 노드 생성
-        Node node1 = new Node(1);
-        Node node2 = new Node(2);
-        Node node3 = new Node(3);
-
-        node1.setNext(node2);
-        node2.setNext(node3);
-
-        // 모든 데이터 출력
-        System.out.println(node1.getData());
-        System.out.println(node1.getNext().getData());
-        System.out.println(node1.getNext().getNext().getData());
-
-        LinkedListSample list = new LinkedListSample();
-        System.out.println("=====insertAt()=====");
-        list.insertAt(0, 0);
-        list.insertAt(1, 1);
-        list.insertAt(2, 2);
-        list.insertAt(3, 3);
-        list.insertAt(4, 4);
-        list.printAll();
-        System.out.println("=====clear()=====");
-        list.clear();
-        list.printAll();
-        System.out.println("=====insertLast()=====");
-        list.insertLast(0);
-        list.insertLast(1);
-        list.insertLast(2);
-        list.insertLast(3);
-        list.insertLast(4);
-        list.printAll();
-        System.out.println("=====deleteAt()=====");
-        list.deleteAt(2);
-        list.printAll();
-        list.deleteAt(0);
-        list.printAll();
-        System.out.println("=====deleteLast()=====");
-        list.deleteLast();
-        list.printAll();
-        System.out.println("=====getNodeAt()=====");
-        Node node = list.getNodeAt(1);
-        System.out.println(node.getData());
-    }
-
 }
