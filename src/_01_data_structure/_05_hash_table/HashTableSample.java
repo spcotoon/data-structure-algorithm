@@ -38,6 +38,10 @@ public class HashTableSample {
         return number % TABLE_SIZE;
     }
 
+    public DoublyLinkedListSample<HashData>[] getTable() {
+        return table;
+    }
+
     public void set(int key, String value) {
         this.table[this.hashFunction(key)].insertAt(0, new HashData(key, value));
     }
