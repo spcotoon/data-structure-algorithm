@@ -3,6 +3,7 @@ package _02_algorithm._04_selection_sort;
 public class Selection {
 
     public void sort(int[] arr) {
+        //비교후 인덱스로 자리 바꿈
         for (int i = 0; i < arr.length - 1; i++) {
             int minValueIndex = i;
 
