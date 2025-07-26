@@ -29,5 +29,8 @@ public class BinarySearchTreePractice {
         System.out.println("=== search 1 ===");
         System.out.println(binarySearchTree.search(1));
 
+        binarySearchTree.remove(10);
+        System.out.println(binarySearchTree.root.inOrderTraversal());
+        binarySearchTree.remove(100);
     }
 }

@@ -85,13 +85,13 @@ public class BinaryTree<T> {
         result.add(tree.getData());
     }
 
-    private BinaryTree<T> removeLeftSubTree() {
+    public BinaryTree<T> removeLeftSubTree() {
         BinaryTree<T> deletingNode = this.getLeftSubTree();
         this.setLeftSubTree(null);
         return deletingNode;
     }
 
-    private BinaryTree<T> removeRightSubTree() {
+    public BinaryTree<T> removeRightSubTree() {
         BinaryTree<T> deletingNode = this.getRightSubTree();
         this.setRightSubTree(null);
         return deletingNode;
