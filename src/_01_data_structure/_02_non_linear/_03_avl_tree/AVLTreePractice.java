@@ -17,7 +17,9 @@ public class AVLTreePractice {
         avlTree.insert(6);
         avlTree.insert(7);
         System.out.println(avlTree.root.preOrderTraversal());
-
+        System.out.println("=== remove ===");
+        avlTree.remove(6);
+        System.out.println(avlTree.root.preOrderTraversal());
         System.out.println("=== binary tree insert ===");
         BinarySearchTree<Integer> binarySearchTree = new BinarySearchTree<>();
         binarySearchTree.insert(1);
@@ -28,6 +30,8 @@ public class AVLTreePractice {
         binarySearchTree.insert(6);
         binarySearchTree.insert(7);
         System.out.println(binarySearchTree.root.preOrderTraversal());
-
+        System.out.println("=== remove ===");
+        binarySearchTree.remove(6);
+        System.out.println(binarySearchTree.root.preOrderTraversal());
     }
 }

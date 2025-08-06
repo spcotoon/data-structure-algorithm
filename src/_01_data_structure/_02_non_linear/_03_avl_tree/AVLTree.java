@@ -48,7 +48,7 @@ public class AVLTree<T extends Comparable<T>>{
     }
 
     private BinaryTree<T> remove(BinaryTree<T> targetRootNode, T data, BinaryTree<T> parentNode) {
-        if (targetRootNode.getData().compareTo(data) < 0) {
+        if (targetRootNode.getData().compareTo(data) > 0) {
             //제거할 데이터가 현재 노드보다 작은경우 왼쪽 자식노드에 있고
 
             if (targetRootNode.getLeftSubTree() != null) {
@@ -57,7 +57,7 @@ public class AVLTree<T extends Comparable<T>>{
                 targetRootNode.setLeftSubTree(this.remove(targetRootNode.getLeftSubTree(), data, parentNode));
                 //제거를 하면 제거된 노드를 대체하는 자식 노드가 리턴됨
             }
-        } else if (targetRootNode.getData().compareTo(data) > 0) {
+        } else if (targetRootNode.getData().compareTo(data) < 0) {
             //제거할 데이터가 현재 노드보다 큰 경우 오른쪽 자식노드에 있고
 
             if (targetRootNode.getRightSubTree() != null) {
