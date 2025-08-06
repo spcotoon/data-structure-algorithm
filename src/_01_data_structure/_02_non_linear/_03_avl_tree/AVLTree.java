@@ -1,11 +1,11 @@
-package _01_data_structure._02_non_linear._02_binary_search_tree;
+package _01_data_structure._02_non_linear._03_avl_tree;
 
 import _01_data_structure._02_non_linear._01_binary_tree.BinaryTree;
 
 
 public class BinarySearchTree<T extends Comparable<T>>{
 
-    public BinaryTree<T> root;
+    BinaryTree<T> root;
 
     public BinarySearchTree() {
         this.root = null;
