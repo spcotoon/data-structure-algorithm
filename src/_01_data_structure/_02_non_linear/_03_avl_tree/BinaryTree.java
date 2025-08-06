@@ -1,4 +1,4 @@
-package _01_data_structure._02_non_linear._01_binary_tree;
+package _01_data_structure._02_non_linear._03_avl_tree;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,12 +8,14 @@ public class BinaryTree<T> {
     private T data;
     private BinaryTree<T> leftSubTree;
     private BinaryTree<T> rightSubTree;
+    private int height;
 
 
     public BinaryTree(T data) {
         this.data = data;
         this.leftSubTree = null;
         this.rightSubTree = null;
+        this.height = 1;
     }
 
     public T getData() {
@@ -95,5 +97,13 @@ public class BinaryTree<T> {
         BinaryTree<T> deletingNode = this.getRightSubTree();
         this.setRightSubTree(null);
         return deletingNode;
+    }
+
+    public int getHeight() {
+        return this.height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 }
