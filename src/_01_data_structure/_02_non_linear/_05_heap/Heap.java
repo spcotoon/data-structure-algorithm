@@ -170,7 +170,7 @@ public class Heap<T extends Comparable<T>>{
         }
     }
 
-    private boolean isBigPriority(T first, T second) {
+    public boolean isBigPriority(T first, T second) {
         return first.compareTo(second) < 0;
     }
 
